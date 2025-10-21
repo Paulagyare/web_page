@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Agyare | Cybersecurity Professional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhana:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="loader-text">
+                <span class="loading-word">INITIALIZING</span>
+                <span class="loading-dots">...</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-stats">
+                <div class="loader-stat">
+                    <i class="fas fa-lock"></i>
+                    <span>SECURITY</span>
+                </div>
+                <div class="loader-stat">
+                    <i class="fas fa-network-wired"></i>
+                    <span>NETWORK</span>
+                </div>
+                <div class="loader-stat">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>PROTECTION</span>
+                </div>
+            </div>
+        </div>
+        <canvas id="loader-canvas"></canvas>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo" id="logo-link">
+                <div class="nav-logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span class="logo-text">PA<span class="text-glow">|CYBER</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-user-shield"></i> About</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#projects" class="nav-link"><i class="fas fa-laptop-code"></i> Projects</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section section-slide">
+        <canvas id="matrix-canvas"></canvas>
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-name-section">
+                    <h1 class="hero-name">
+                        <span class="name-line">PAUL</span>
+                        <span class="name-line">AGYARE</span>
+                    </h1>
+                    <div class="name-underline"></div>
+                </div>
+                <div class="typing-container">
+                    <p class="typing-text">Cybersecurity Analyst<span class="cursor">|</span></p>
+                </div>
+                <p class="hero-subtitle">Vulnerability & Risk Compliance Specialist</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Get In Touch</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View Projects</span>
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-stats">
+                    <div class="stat-box" data-hover="security">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="stat-number" data-target="6000">0</span>+
+                        <p>Records Audited</p>
+                    </div>
+                    <div class="stat-box" data-hover="support">
+                        <i class="fas fa-users"></i>
+                        <span class="stat-number" data-target="3000">0</span>+
+                        <p>Users Supported</p>
+                    </div>
+                    <div class="stat-box" data-hover="accuracy">
+                        <i class="fas fa-bullseye"></i>
+                        <span class="stat-number" data-target="99">0</span>%
+                        <p>Accuracy Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>Scroll Down</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-slide">
+        <canvas id="particles-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">01.</span>
+                ABOUT ME
+                <span class="title-line"></span>
+            </h2>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <div class="image-wrapper">
+                        <img class="main-image" src="paul-professional.JPG" alt="Paul Agyare - Professional">
+                        <div class="hover-logo">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <div class="image-fade-overlay"></div>
+                    </div>
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <span class="terminal-button close"></span>
+                            <span class="terminal-button minimize"></span>
+                            <span class="terminal-button maximize"></span>
+                            <span class="terminal-title">about_paul.sh</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="prompt">$</span> cat objective.txt</p>
+                            <p class="objective-text">
+                                Motivated <span class="highlight">Cybersecurity major</span> at BYU–Idaho seeking an 
+                                <span class="highlight">Info Security Vulnerability & Risk Compliance Analyst Internship</span>. 
+                                Skilled in identifying security gaps, managing network configurations, and supporting 
+                                compliance practices. Eager to apply hands-on experience in vulnerability assessment, 
+                                system hardening, and cloud security to strengthen organizational defenses.
+                            </p>
+                            <p class="terminal-line"><span class="prompt">$</span> ./education.sh</p>
+                            <div class="education-info">
+                                <h3><i class="fas fa-graduation-cap"></i> Brigham Young University–Idaho</h3>
+                                <p class="degree">Bachelor of Science in Cybersecurity</p>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Rexburg, ID</p>
+                                <p class="graduation"><i class="fas fa-calendar"></i> Expected: 2028</p>
+                                <div class="coursework">
+                                    <p class="terminal-line"><span class="prompt">$</span> ls coursework/</p>
+                                    <ul>
+                                        <li><i class="fas fa-chevron-right"></i> Network Security</li>
+                                        <li><i class="fas fa-chevron-right"></i> Vulnerability & Risk Management</li>
+                                        <li><i class="fas fa-chevron-right"></i> Linux Administration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="terminal-line"><span class="prompt">$</span> <span class="cursor-blink">_</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section section-slide">
+        <canvas id="network-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">02.</span>
+                TECHNICAL ARSENAL
+                <span class="title-line"></span>
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="category-header">
+                        <i class="fas fa-shield-virus"></i>
+                        <h3>Security & Compliance</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item" data-level="90">
+                            <span class="skill-name">
+                                Vulnerability Scanning
+                                <span class="skill-percentage">90%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <span class="skill-name">
+                                IAM
+                                <span class="skill-percentage">85%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <span class="skill-name">
+                                Encryption
+                                <span class="skill-percentage">88%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="92">
+                            <span class="skill-name">
+                                Access Control
+                                <span class="skill-percentage">92%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="category-header">
+                        <i class="fas fa-network-wired"></i>
+                        <h3>Networking</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item" data-level="90">
+                            <span class="skill-name">
+                                VLANs & Trunking
+                                <span class="skill-percentage">90%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <span class="skill-name">
+                                HSRP & DHCP
+                                <span class="skill-percentage">85%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <span class="skill-name">
+                                OSPF & Routing
+                                <span class="skill-percentage">88%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="92">
+                            <span class="skill-name">
+                                Subnetting
+                                <span class="skill-percentage">92%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="category-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & Systems</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item" data-level="85">
+                            <span class="skill-name">
+                                AWS
+                                <span class="skill-percentage">85%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="90">
+                            <span class="skill-name">
+                                Linux Scripting
+                                <span class="skill-percentage">90%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <span class="skill-name">
+                                Wireshark
+                                <span class="skill-percentage">88%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="87">
+                            <span class="skill-name">
+                                Python & Bash
+                                <span class="skill-percentage">87%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="87"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack Icons -->
+            <div class="tech-stack" data-aos="fade-up">
+                <h3 class="tech-title">Technologies I Work With</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" data-tooltip="AWS">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Linux">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Python">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Docker">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Git">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Network Security">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Cloud Security">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Penetration Testing">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section section-slide">
+        <canvas id="binary-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">03.</span>
+                EXPERIENCE
+                <span class="title-line"></span>
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Help and Operations Support</h3>
+                            <span class="company"><i class="fas fa-building"></i> FamilySearch</span>
+                        </div>
+                        <div class="timeline-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Accra, Ghana</span>
+                            <span class="date"><i class="fas fa-calendar"></i> Aug 2024 – Dec 2024</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li><i class="fas fa-check-circle"></i> Resolved 100+ user issues weekly with 95% first-contact success.</li>
+                            <li><i class="fas fa-check-circle"></i> Supported 3,000+ monthly customers through chat, phone, and email.</li>
+                            <li><i class="fas fa-check-circle"></i> Conducted 6,000+ record audits with 98% accuracy, improving data reliability.</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">Customer Support</span>
+                            <span class="tag">Data Auditing</span>
+                            <span class="tag">Quality Assurance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Researcher</h3>
+                            <span class="company"><i class="fas fa-building"></i> Build Central Inc</span>
+                        </div>
+                        <div class="timeline-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                            <span class="date"><i class="fas fa-calendar"></i> Mar 2024 – May 2024</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li><i class="fas fa-check-circle"></i> Analyzed data across 254 Texas counties with 99.9% accuracy.</li>
+                            <li><i class="fas fa-check-circle"></i> Quickly adapted to company systems and workflows, maintaining high productivity.</li>
+                            <li><i class="fas fa-check-circle"></i> Collaborated internationally to deliver compliance-related reports.</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Compliance</span>
+                            <span class="tag">Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Instructor & Coordinator</h3>
+                            <span class="company"><i class="fas fa-building"></i> Ghana Missionary Training Center</span>
+                        </div>
+                        <div class="timeline-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Accra, Ghana</span>
+                            <span class="date"><i class="fas fa-calendar"></i> Apr 2021 – Jul 2023</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li><i class="fas fa-check-circle"></i> Trained and mentored 200+ individuals, improving technical efficiency.</li>
+                            <li><i class="fas fa-check-circle"></i> Coordinated logistics and data records for 30+ learners.</li>
+                            <li><i class="fas fa-check-circle"></i> Provided IT support, performing system updates and vulnerability checks.</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">Training</span>
+                            <span class="tag">IT Support</span>
+                            <span class="tag">Vulnerability Assessment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section section-slide">
+        <canvas id="hexagon-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">04.</span>
+                PROJECTS & SECURITY LABS
+                <span class="title-line"></span>
+            </h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="flip-left">
+                    <div class="project-image">
+                        <img src="enterprise-network-security.webp" alt="Enterprise Network Security">
+                        <div class="project-overlay">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Enterprise Network Security</h3>
+                        <p>Configured VLANs, trunking, PortFast, and Rapid-PVST+ for secure, high-performance networks with enhanced segmentation.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">VLANs</span>
+                            <span class="tech-badge">PortFast</span>
+                            <span class="tech-badge">PVST+</span>
+                            <span class="tech-badge">Network Security</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Details</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="ubuntu-server-security-best-practices.webp" alt="Secure Linux Server">
+                        <div class="project-overlay">
+                            <i class="fab fa-linux"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Secure Linux Server Infrastructure</h3>
+                        <p>Built hardened Linux servers with advanced access control, automated Bash scripting, and comprehensive security policies.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Linux</span>
+                            <span class="tech-badge">Bash</span>
+                            <span class="tech-badge">Access Control</span>
+                            <span class="tech-badge">Automation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Details</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="byui_app.png" alt="BYU-Idaho Lost & Found App">
+                        <div class="project-overlay">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>BYU-Idaho Lost & Found App</h3>
+                        <p>Created a secure mobile application with encrypted login, role-based admin controls, and integrated database management.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Mobile Dev</span>
+                            <span class="tech-badge">Authentication</span>
+                            <span class="tech-badge">Database</span>
+                            <span class="tech-badge">Admin Panel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Details</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leadership Section -->
+            <div class="leadership-section" data-aos="fade-up">
+                <h3 class="leadership-title">Leadership & Community Impact</h3>
+                <div class="leadership-grid">
+                    <div class="leadership-card">
+                        <div class="leadership-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h4>Peer Mentorship</h4>
+                        <p>Assisted peers with cybersecurity and network troubleshooting labs, fostering collaborative learning.</p>
+                    </div>
+                    <div class="leadership-card">
+                        <div class="leadership-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h4>Case Study Leadership</h4>
+                        <p>Led collaborative case studies in risk and compliance analysis, developing practical security solutions.</p>
+                    </div>
+                    <div class="leadership-card">
+                        <div class="leadership-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Vulnerability Management</h4>
+                        <p>Applied vulnerability management concepts in simulated environments, enhancing practical security skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-slide">
+        <canvas id="radar-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">05.</span>
+                GET IN TOUCH
+                <span class="title-line"></span>
+            </h2>
+            <div class="contact-content">
+                <div class="contact-text" data-aos="fade-right">
+                    <h3>Let's Secure the Future Together</h3>
+                    <p>I'm currently seeking internship opportunities in Information Security, Vulnerability Assessment, and Risk Compliance. If you're looking for a dedicated cybersecurity professional to strengthen your organization's defenses, let's connect!</p>
+                    <div class="contact-methods">
+                        <a href="mailto:agy21003@byui.edu" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Email</h4>
+                                <p>agy21003@byui.edu</p>
+                            </div>
+                        </a>
+                        <a href="tel:2087606233" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Phone</h4>
+                                <p>208-760-6233</p>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Location</h4>
+                                <p>Rexburg, Idaho</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" data-tooltip="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" data-tooltip="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" data-tooltip="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" data-tooltip="Portfolio">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Your Name</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Your Email</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" required>
+                            <label for="subject">Subject</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" required></textarea>
+                            <label for="message">Your Message</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <button type="submit" class="btn btn-submit">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Paul Agyare. Securing the Digital Frontier.</p>
+            <p class="footer-tagline">Designed & Built with <i class="fas fa-heart"></i> and <i class="fas fa-code"></i></p>
+        </div>
+        <div class="footer-particles"></div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your EmailJS public key
+        })();
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
