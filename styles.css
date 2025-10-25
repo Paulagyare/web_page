@@ -2601,7 +2601,7 @@ body {
     transform-style: preserve-3d;
     perspective: 1000px;
     cursor: pointer;
-    height: 320px;
+    height: 400px;
     animation: flagWave 5s ease-in-out infinite;
     transform-origin: top center;
     box-shadow: 
@@ -2733,8 +2733,86 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 191, 255, 0.05) 100%);
+}
+
+/* Experience Summary */
+.experience-summary {
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #00ff88;
+}
+
+.experience-summary p {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Key Metrics */
+.key-metrics {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px;
+    background: rgba(0, 191, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 191, 255, 0.3);
+    flex: 1;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00ff88;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+    margin-bottom: 4px;
+}
+
+.metric-label {
+    font-size: 11px;
+    color: #00bfff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-content {
+        height: 450px;
+    }
+    
+    .key-metrics {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .metric {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+    
+    .metric-value {
+        font-size: 18px;
+    }
+    
+    .metric-label {
+        font-size: 12px;
+    }
 }
 
 /* Cyber Flash Card Back Face */
