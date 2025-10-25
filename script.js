@@ -159,7 +159,7 @@ function initParticles() {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(0, 255, 136, 0.5)';
+            ctx.fillStyle = 'rgba(16, 36, 57, 0.5)';
             ctx.fill();
         }
     }
@@ -185,7 +185,7 @@ function initParticles() {
 
                 if (distance < 120) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(0, 255, 136, ${1 - distance / 120})`;
+                    ctx.strokeStyle = `rgba(16, 36, 57, ${1 - distance / 120})`;
                     ctx.lineWidth = 0.5;
                     ctx.moveTo(p1.x, p1.y);
                     ctx.lineTo(p2.x, p2.y);
@@ -282,7 +282,7 @@ function initNetwork() {
     });
 }
 
-// ===== BINARY ANIMATION =====
+// ===== GEOMETRIC LINES ANIMATION =====
 function initBinary() {
     const canvas = document.getElementById('binary-canvas');
     if (!canvas) return;
@@ -291,37 +291,75 @@ function initBinary() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 
-    const fontSize = 20;
-    const columns = canvas.width / fontSize;
-    const binaries = [];
+    const hexagons = [];
+    const hexCount = 30;
 
-    for (let i = 0; i < columns; i++) {
-        binaries[i] = {
-            y: Math.random() * canvas.height,
-            speed: Math.random() * 2 + 1
-        };
-    }
+    class Hexagon {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 30 + 20;
+            this.rotation = Math.random() * Math.PI * 2;
+            this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+            this.alpha = Math.random() * 0.3 + 0.1;
+            this.alphaSpeed = (Math.random() - 0.5) * 0.01;
+            this.xSpeed = (Math.random() - 0.5) * 0.5;
+            this.ySpeed = (Math.random() - 0.5) * 0.5;
+        }
 
-    function draw() {
-        ctx.fillStyle = 'rgba(10, 25, 47, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        update() {
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+            this.rotation += this.rotationSpeed;
+            this.alpha += this.alphaSpeed;
 
-        ctx.fillStyle = 'rgba(0, 255, 136, 0.3)';
-        ctx.font = fontSize + 'px monospace';
+            if (this.alpha > 0.4) this.alphaSpeed = -Math.abs(this.alphaSpeed);
+            if (this.alpha < 0.1) this.alphaSpeed = Math.abs(this.alphaSpeed);
 
-        for (let i = 0; i < binaries.length; i++) {
-            const binary = Math.random() > 0.5 ? '1' : '0';
-            ctx.fillText(binary, i * fontSize, binaries[i].y);
+            if (this.x < -50) this.x = canvas.width + 50;
+            if (this.x > canvas.width + 50) this.x = -50;
+            if (this.y < -50) this.y = canvas.height + 50;
+            if (this.y > canvas.height + 50) this.y = -50;
+        }
 
-            binaries[i].y += binaries[i].speed;
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.globalAlpha = this.alpha;
+            ctx.strokeStyle = 'rgba(16, 36, 57, 0.6)';
+            ctx.lineWidth = 3;
 
-            if (binaries[i].y > canvas.height && Math.random() > 0.975) {
-                binaries[i].y = 0;
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const angle = (Math.PI / 3) * i;
+                const x = Math.cos(angle) * this.size;
+                const y = Math.sin(angle) * this.size;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
             }
+            ctx.closePath();
+            ctx.stroke();
+            ctx.restore();
         }
     }
 
-    setInterval(draw, 50);
+    for (let i = 0; i < hexCount; i++) {
+        hexagons.push(new Hexagon());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        hexagons.forEach(hex => {
+            hex.update();
+            hex.draw();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 
     window.addEventListener('resize', () => {
         canvas.width = canvas.offsetWidth;
@@ -418,7 +456,7 @@ function initRadar() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw circles
-        ctx.strokeStyle = 'rgba(0, 255, 136, 0.1)';
+        ctx.strokeStyle = 'rgba(16, 36, 57, 0.1)';
         ctx.lineWidth = 1;
         for (let i = 1; i <= 4; i++) {
             ctx.beginPath();
@@ -440,9 +478,9 @@ function initRadar() {
         ctx.rotate(angle);
 
         const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, maxRadius);
-        gradient.addColorStop(0, 'rgba(0, 255, 136, 0.8)');
-        gradient.addColorStop(0.5, 'rgba(0, 255, 136, 0.3)');
-        gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+        gradient.addColorStop(0, 'rgba(16, 36, 57, 0.8)');
+        gradient.addColorStop(0.5, 'rgba(16, 36, 57, 0.3)');
+        gradient.addColorStop(1, 'rgba(16, 36, 57, 0)');
 
         ctx.beginPath();
         ctx.moveTo(0, 0);
