@@ -1,3 +1,90 @@
+// ===== RESPONSIVE CANVAS HANDLING =====
+function handleCanvasResize(canvas, drawFunction) {
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        
+        if (drawFunction) {
+            drawFunction(ctx, rect.width, rect.height);
+        }
+    }
+    
+    // Initial resize
+    resizeCanvas();
+    
+    // Resize on window resize
+    window.addEventListener('resize', resizeCanvas);
+    
+    return resizeCanvas;
+}
+
+// ===== RESPONSIVE DESIGN UTILITIES =====
+function initResponsiveDesign() {
+    // Handle viewport changes
+    function handleViewportChange() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    // Initial call
+    handleViewportChange();
+    
+    // Listen for resize events
+    window.addEventListener('resize', handleViewportChange);
+    window.addEventListener('orientationchange', handleViewportChange);
+    
+    // Handle mobile menu overlay click
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu?.classList.contains('active') && 
+            !navMenu.contains(e.target) && 
+            !hamburger.contains(e.target)) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    });
+    
+    // Close menu when clicking on nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu?.classList.remove('active');
+            hamburger?.classList.remove('active');
+        });
+    });
+    
+    // Prevent body scroll when menu is open
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const target = mutation.target;
+                if (target.classList.contains('nav-menu')) {
+                    if (target.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                }
+            }
+        });
+    });
+    
+    if (navMenu) {
+        observer.observe(navMenu, { attributes: true });
+    }
+}
+
 // ===== PAGE LOADER =====
 function initPageLoader() {
     const loader = document.querySelector('.page-loader');
@@ -5,47 +92,51 @@ function initPageLoader() {
     
     if (!loaderCanvas) return;
     
-    const ctx = loaderCanvas.getContext('2d');
-    loaderCanvas.width = window.innerWidth;
-    loaderCanvas.height = window.innerHeight;
-    
-    // Binary rain effect for loader
-    const columns = Math.floor(loaderCanvas.width / 20);
-    const drops = [];
-    
-    for (let i = 0; i < columns; i++) {
-        drops[i] = Math.random() * loaderCanvas.height;
-    }
-    
-    function drawLoader() {
-        ctx.fillStyle = 'rgba(2, 12, 27, 0.05)';
-        ctx.fillRect(0, 0, loaderCanvas.width, loaderCanvas.height);
+    // Initialize canvas with responsive handling
+    handleCanvasResize(loaderCanvas, (ctx, width, height) => {
+        // Binary rain effect for loader
+        const columns = Math.floor(width / 20);
+        const drops = [];
         
-        ctx.fillStyle = '#00ff88';
-        ctx.font = '14px Share Tech Mono';
-        
-        for (let i = 0; i < drops.length; i++) {
-            const text = Math.random() > 0.5 ? '1' : '0';
-            const x = i * 20;
-            const y = drops[i];
-            
-            ctx.fillText(text, x, y);
-            
-            if (y > loaderCanvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            
-            drops[i] += 20;
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * height;
         }
-    }
-    
-    const loaderInterval = setInterval(drawLoader, 50);
+        
+        function drawLoader() {
+            ctx.fillStyle = 'rgba(2, 12, 27, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.fillStyle = '#00ff88';
+            ctx.font = '14px Share Tech Mono';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = Math.random() > 0.5 ? '1' : '0';
+                const x = i * 20;
+                const y = drops[i];
+                
+                ctx.fillText(text, x, y);
+                
+                if (y > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i] += 20;
+            }
+        }
+        
+        const loaderInterval = setInterval(drawLoader, 50);
+        
+        // Store interval for cleanup
+        window.loaderInterval = loaderInterval;
+    });
     
     // Hide loader after animation completes
     window.addEventListener('load', () => {
         setTimeout(() => {
             loader.classList.add('hidden');
-            clearInterval(loaderInterval);
+            if (window.loaderInterval) {
+                clearInterval(window.loaderInterval);
+            }
             
             // Remove loader from DOM after transition
             setTimeout(() => {
@@ -878,6 +969,9 @@ function initLogoClick() {
 
 // ===== INITIALIZE ALL =====
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize responsive design
+    initResponsiveDesign();
+    
     // Initialize canvas animations
     initMatrixRain();
     initParticles();
