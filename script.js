@@ -154,17 +154,24 @@ function initMatrixRain() {
     const canvas = document.getElementById('matrix-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
     let angle = 0;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const maxRadius = Math.min(canvas.width, canvas.height) * 0.4;
+    let centerX, centerY, maxRadius;
+    let animationId;
 
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function draw(ctx, width, height) {
+        centerX = width / 2;
+        centerY = height / 2;
+        // Use max radius based on screen size, capped for very large screens
+        maxRadius = Math.min(width, height) * 0.35;
+        // For very large screens (over 1920px), scale down the radius
+        if (width > 1920) {
+            maxRadius = Math.min(600, Math.min(width, height) * 0.3);
+        }
+        if (height > 1920) {
+            maxRadius = Math.min(600, Math.min(width, height) * 0.3);
+        }
+        
+        ctx.clearRect(0, 0, width, height);
 
         // Draw circles
         ctx.strokeStyle = 'rgba(0, 255, 136, 0.1)';
@@ -205,16 +212,15 @@ function initMatrixRain() {
         angle += 0.02;
     }
 
-    function animate() {
-        draw();
-        requestAnimationFrame(animate);
+    function animate(ctx, width, height) {
+        draw(ctx, width, height);
+        animationId = requestAnimationFrame(() => animate(ctx, width, height));
     }
 
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+    // Initialize with responsive handling
+    const resizeFn = handleCanvasResize(canvas, (ctx, width, height) => {
+        if (animationId) cancelAnimationFrame(animationId);
+        animate(ctx, width, height);
     });
 }
 
@@ -378,17 +384,13 @@ function initBinary() {
     const canvas = document.getElementById('binary-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
     const hexagons = [];
     const hexCount = 30;
 
     class Hexagon {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
+        constructor(width, height) {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
             this.size = Math.random() * 30 + 20;
             this.rotation = Math.random() * Math.PI * 2;
             this.rotationSpeed = (Math.random() - 0.5) * 0.02;
@@ -396,9 +398,11 @@ function initBinary() {
             this.alphaSpeed = (Math.random() - 0.5) * 0.01;
             this.xSpeed = (Math.random() - 0.5) * 0.5;
             this.ySpeed = (Math.random() - 0.5) * 0.5;
+            this.maxWidth = width;
+            this.maxHeight = height;
         }
 
-        update() {
+        update(width, height) {
             this.x += this.xSpeed;
             this.y += this.ySpeed;
             this.rotation += this.rotationSpeed;
@@ -407,13 +411,16 @@ function initBinary() {
             if (this.alpha > 0.4) this.alphaSpeed = -Math.abs(this.alphaSpeed);
             if (this.alpha < 0.1) this.alphaSpeed = Math.abs(this.alphaSpeed);
 
-            if (this.x < -50) this.x = canvas.width + 50;
-            if (this.x > canvas.width + 50) this.x = -50;
-            if (this.y < -50) this.y = canvas.height + 50;
-            if (this.y > canvas.height + 50) this.y = -50;
+            if (this.x < -50) this.x = width + 50;
+            if (this.x > width + 50) this.x = -50;
+            if (this.y < -50) this.y = height + 50;
+            if (this.y > height + 50) this.y = -50;
+            
+            this.maxWidth = width;
+            this.maxHeight = height;
         }
 
-        draw() {
+        draw(ctx) {
             ctx.save();
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
@@ -435,27 +442,31 @@ function initBinary() {
         }
     }
 
-    for (let i = 0; i < hexCount; i++) {
-        hexagons.push(new Hexagon());
+    function draw(ctx, width, height) {
+        // Initialize or update hexagons
+        if (hexagons.length === 0) {
+            for (let i = 0; i < hexCount; i++) {
+                hexagons.push(new Hexagon(width, height));
+            }
+        } else {
+            hexagons.forEach(hex => hex.update(width, height));
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            hexagons.forEach(hex => {
+                hex.draw(ctx);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     }
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        hexagons.forEach(hex => {
-            hex.update();
-            hex.draw();
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-    });
+    // Initialize with responsive handling
+    handleCanvasResize(canvas, draw);
 }
 
 // ===== HEXAGON ANIMATION =====
@@ -534,17 +545,24 @@ function initRadar() {
     const canvas = document.getElementById('radar-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
     let angle = 0;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const maxRadius = Math.min(canvas.width, canvas.height) * 0.4;
+    let centerX, centerY, maxRadius;
+    let animationId;
 
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function draw(ctx, width, height) {
+        centerX = width / 2;
+        centerY = height / 2;
+        // Use max radius based on screen size, capped for very large screens
+        maxRadius = Math.min(width, height) * 0.35;
+        // For very large screens (over 1920px), scale down the radius
+        if (width > 1920) {
+            maxRadius = Math.min(600, Math.min(width, height) * 0.3);
+        }
+        if (height > 1920) {
+            maxRadius = Math.min(600, Math.min(width, height) * 0.3);
+        }
+        
+        ctx.clearRect(0, 0, width, height);
 
         // Draw circles
         ctx.strokeStyle = 'rgba(16, 36, 57, 0.1)';
@@ -585,16 +603,15 @@ function initRadar() {
         angle += 0.02;
     }
 
-    function animate() {
-        draw();
-        requestAnimationFrame(animate);
+    function animate(ctx, width, height) {
+        draw(ctx, width, height);
+        animationId = requestAnimationFrame(() => animate(ctx, width, height));
     }
 
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+    // Initialize with responsive handling
+    const resizeFn = handleCanvasResize(canvas, (ctx, width, height) => {
+        if (animationId) cancelAnimationFrame(animationId);
+        animate(ctx, width, height);
     });
 }
 
@@ -674,19 +691,49 @@ function initSmoothScroll() {
 // ===== NAVBAR SCROLL EFFECT =====
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-    let lastScroll = 0;
+    const sections = document.querySelectorAll('section[id]');
+    
+    // Define section background colors
+    const sectionColors = {
+        'home': 'dark',           // Dark blue background
+        'about': 'light',         // Light grey background
+        'skills': 'light',        // Light grey background
+        'experience': 'dark',     // Dark blue background
+        'projects': 'light',      // Light grey background
+        'contact': 'dark'         // Dark blue background
+    };
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 100) {
-            navbar.classList.add('scrolled');
+    function updateNavbarColor() {
+        const scrollPosition = window.pageYOffset + 150; // Offset for better detection
+        
+        // Find the current section
+        let currentSection = 'home'; // Default
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSection = sectionId;
+            }
+        });
+        
+        // Apply color based on current section
+        navbar.classList.remove('navbar-light', 'navbar-dark', 'scrolled');
+        navbar.classList.add('scrolled'); // Always use scrolled state
+        
+        const sectionColor = sectionColors[currentSection] || 'dark';
+        
+        if (sectionColor === 'light') {
+            navbar.classList.add('navbar-light'); // Light section - navbar becomes dark
         } else {
-            navbar.classList.remove('scrolled');
+            navbar.classList.add('navbar-dark'); // Dark section - navbar becomes light
         }
+    }
 
-        lastScroll = currentScroll;
-    });
+    window.addEventListener('scroll', updateNavbarColor);
+    updateNavbarColor(); // Initial call
 }
 
 // ===== MOBILE MENU TOGGLE =====
