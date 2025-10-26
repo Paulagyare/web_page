@@ -631,9 +631,9 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 25px;
     background: rgba(184, 178, 178, 0.5);
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 50px;
     border: 1px solid rgba(16, 36, 57, 0.3);
     backdrop-filter: blur(20px);
@@ -698,35 +698,24 @@ body {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     cursor: pointer;
     position: relative;
     z-index: 1001;
-    padding: 8px;
-    border-radius: 8px;
-    background: rgba(0, 255, 136, 0.1);
-    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 6px;
     transition: all 0.3s ease;
 }
 
 .hamburger span {
-    width: 28px;
-    height: 3px;
-    background: linear-gradient(90deg, #00ff88, #00bfff);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 25px;
+    height: 2.5px;
+    background: #0a192f;
+    transition: all 0.3s ease;
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
-}
-
-.hamburger:hover {
-    background: rgba(0, 255, 136, 0.2);
-    border-color: rgba(0, 255, 136, 0.5);
-    transform: scale(1.05);
 }
 
 .hamburger:hover span {
-    background: linear-gradient(90deg, #00bfff, #00ff88);
-    box-shadow: 0 0 12px rgba(0, 191, 255, 0.5);
+    background: #00ff88;
 }
 
 /* Hamburger Animation */
@@ -753,75 +742,59 @@ body {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: linear-gradient(135deg, #102439 0%, #0a192f 100%);
-        backdrop-filter: blur(20px);
-        border-left: 2px solid rgba(0, 255, 136, 0.3);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        background: rgba(16, 36, 57, 0.98);
+        backdrop-filter: blur(30px);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        transition: all 0.3s ease;
         z-index: 1000;
-        padding: 80px 0;
+        padding: 80px 30px 30px 30px;
     }
 
     .nav-menu.active {
         right: 0;
     }
 
-    .nav-menu::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 191, 255, 0.05) 100%);
-        z-index: -1;
-    }
-
     .nav-link {
-        font-size: 18px;
-        padding: 15px 25px;
-        border-radius: 12px;
-        background: rgba(0, 255, 136, 0.15);
-        border: 1px solid rgba(0, 255, 136, 0.4);
+        font-size: 16px;
+        padding: 12px 15px;
+        border-radius: 8px;
+        background: transparent;
+        border: none;
         transition: all 0.3s ease;
-        width: 200px;
-        text-align: center;
+        width: 100%;
+        text-align: left;
         position: relative;
-        overflow: hidden;
         color: #ffffff !important;
-        font-weight: 600;
+        font-weight: 500;
+        margin-bottom: 5px;
     }
 
     .nav-link::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
-        transition: all 0.6s ease;
-    }
-
-    .nav-link:hover::before {
-        left: 100%;
+        display: none;
     }
 
     .nav-link:hover {
-        background: rgba(0, 255, 136, 0.3);
-        border-color: rgba(0, 255, 136, 0.6);
+        background: rgba(255, 255, 255, 0.05);
+        border: none;
         transform: translateX(5px);
-        box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        box-shadow: none;
         color: #00ff88 !important;
     }
 
     .nav-link i {
-        margin-right: 12px;
+        margin-right: 15px;
         font-size: 16px;
+        color: #888;
+        width: 20px;
+        text-align: center;
+    }
+
+    .nav-link:hover i {
         color: #00ff88;
     }
 
