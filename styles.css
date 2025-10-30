@@ -3863,25 +3863,25 @@ body {
     align-items: center;
     gap: 20px;
     padding: 20px;
-    background: #102439;
-    border: 1px solid #b8b2b2;
+    background: #0a192f;
+    border: 1px solid rgba(0, 255, 136, 0.2);
     border-radius: 10px;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
 
 .contact-method:hover {
-    background: #b8b2b2;
-    border-color: #102439;
+    background: rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.35);
     transform: translateX(10px);
-    box-shadow: 0 5px 20px rgba(16, 36, 57, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
 }
 
 .method-icon {
     width: 60px;
     height: 60px;
-    background: #b8b2b2;
-    border: 2px solid #b8b2b2;
+    background: rgba(0, 255, 136, 0.08);
+    border: 2px solid rgba(0, 255, 136, 0.25);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3890,30 +3890,30 @@ body {
 }
 
 .contact-method:hover .method-icon {
-    background: #102439;
-    border-color: #102439;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
     transform: rotate(360deg);
 }
 
 .method-icon i {
     font-size: 24px;
-    color: #102439;
+    color: var(--primary-color);
     transition: all 0.3s ease-in-out;
 }
 
 .contact-method:hover .method-icon i {
-    color: #b8b2b2;
+    color: #0a192f;
 }
 
 .method-info h4 {
-    color: #b8b2b2;
+    color: var(--text-bright);
     font-size: 16px;
     margin-bottom: 5px;
     transition: all 0.3s ease-in-out;
 }
 
 .method-info p {
-    color: #b8b2b2;
+    color: var(--text-secondary);
     font-family: var(--font-mono);
     font-size: 14px;
     transition: all 0.3s ease-in-out;
@@ -3921,7 +3921,7 @@ body {
 
 .contact-method:hover .method-info h4,
 .contact-method:hover .method-info p {
-    color: #102439;
+    color: var(--text-bright);
 }
 
 .social-links {
@@ -4001,8 +4001,8 @@ body {
 }
 
 .contact-form-wrapper {
-    background: #102439;
-    border: 1px solid #b8b2b2;
+    background: #0a192f;
+    border: 1px solid rgba(0, 255, 136, 0.2);
     border-radius: 15px;
     padding: 40px;
     transition: all 0.3s ease-in-out;
@@ -4080,9 +4080,9 @@ body {
 .btn-submit {
     width: 100%;
     padding: 15px;
-    background: #b8b2b2;
-    color: #102439;
-    border: 2px solid #b8b2b2;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
     font-family: var(--font-body);
     font-size: 16px;
@@ -4126,10 +4126,10 @@ body {
 }
 
 .btn-submit:hover {
-    background: #b8b2b2;
-    color: #102439;
-    border-color: #102439;
-    box-shadow: 0 15px 40px rgba(16, 36, 57, 0.6);
+    background: var(--primary-color);
+    color: #0a192f;
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
     transform: translateY(-8px) scale(1.02);
     animation: buttonPulse 0.8s ease-in-out;
 }
