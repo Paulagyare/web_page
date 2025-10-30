@@ -4254,21 +4254,68 @@ body {
     transition: all 0.3s ease;
 }
 
-.footer-content p:hover {
-    color: rgba(0, 255, 136, 0.8);
-    transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+/* Enhanced primary line styling */
+.footer-content p:first-child {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, rgba(0,255,136,0.6), rgba(0,191,255,0.6), rgba(255,0,255,0.5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: footerTextGradient 10s ease infinite;
 }
 
+@keyframes footerTextGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Tagline with angled brackets */
 .footer-tagline {
     font-family: var(--font-mono);
     font-size: 12px;
     margin-top: 5px;
     color: #8a8a8a;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
+    gap: 6px;
+    letter-spacing: 0.6px;
+}
+
+.footer-tagline::before,
+.footer-tagline::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,255,136,0.4), rgba(0,191,255,0.4));
+}
+
+/* Footer links styling */
+.footer a {
+    color: #b8b2b2;
+    text-decoration: none;
+    position: relative;
+}
+
+.footer a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0; height: 1px;
+    background: linear-gradient(90deg, #00ff88, #00bfff);
+    transition: width 0.3s ease;
+}
+
+.footer a:hover { color: #e0e0e0; }
+.footer a:hover::after { width: 100%; }
+
+.footer-content p:hover {
+    color: rgba(0, 255, 136, 0.8);
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
 .footer-tagline span {
@@ -4525,3 +4572,23 @@ body {
     background: rgba(16, 36, 57, 0.8);
 }
 
+.footer-social {
+    display: inline-flex;
+    gap: 12px;
+    margin: 10px 0 6px 0;
+}
+
+.footer-social a {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #b8b2b2;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(184, 178, 178, 0.25);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: icon;}

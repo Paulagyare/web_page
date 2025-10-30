@@ -229,76 +229,69 @@ function initParticles() {
     const canvas = document.getElementById('particles-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-    const particles = [];
+    let particles = [];
     const particleCount = 80;
 
     class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
+        constructor(width, height) {
+            this.reset(width, height);
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
             this.radius = Math.random() * 2 + 1;
         }
-
-        update() {
+        reset(width, height) {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+        }
+        update(width, height) {
             this.x += this.vx;
             this.y += this.vy;
-
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(16, 36, 57, 0.5)';
-            ctx.fill();
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
         }
     }
 
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
+    handleCanvasResize(canvas, (ctx, width, height) => {
+        // Initialize or resize particles
+        if (particles.length === 0) {
+            for (let i = 0; i < particleCount; i++) particles.push(new Particle(width, height));
+        } else {
+            particles.forEach(p => p.reset(width, height));
+        }
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
 
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
-        });
-
-        // Draw connections
-        particles.forEach((p1, i) => {
-            particles.slice(i + 1).forEach(p2 => {
-                const dx = p1.x - p2.x;
-                const dy = p1.y - p2.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 120) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(16, 36, 57, ${1 - distance / 120})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
+            // Draw connections first for underlay
+            particles.forEach((p1, i) => {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(16, 36, 57, ${1 - distance / 120})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
                 }
             });
-        });
 
-        requestAnimationFrame(animate);
-    }
+            // Update and draw particles
+            particles.forEach(p => {
+                p.update(width, height);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(16, 36, 57, 0.5)';
+                ctx.fill();
+            });
 
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+            requestAnimationFrame(animate);
+        }
+        animate();
     });
 }
 
@@ -307,31 +300,24 @@ function initNetwork() {
     const canvas = document.getElementById('network-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-    const nodes = [];
+    let nodes = [];
     const nodeCount = 50;
 
     class Node {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
+        constructor(width, height) {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
             this.vx = (Math.random() - 0.5) * 0.3;
             this.vy = (Math.random() - 0.5) * 0.3;
             this.radius = Math.random() * 3 + 1;
         }
-
-        update() {
+        update(width, height) {
             this.x += this.vx;
             this.y += this.vy;
-
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
         }
-
-        draw() {
+        draw(ctx) {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(0, 212, 255, 0.6)';
@@ -339,43 +325,40 @@ function initNetwork() {
         }
     }
 
-    for (let i = 0; i < nodeCount; i++) {
-        nodes.push(new Node());
-    }
+    handleCanvasResize(canvas, (ctx, width, height) => {
+        // Initialize or reset nodes
+        if (nodes.length === 0) {
+            for (let i = 0; i < nodeCount; i++) nodes.push(new Node(width, height));
+        } else {
+            nodes.forEach(n => { n.x = Math.random() * width; n.y = Math.random() * height; });
+        }
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
 
-        nodes.forEach(node => {
-            node.update();
-            node.draw();
-        });
+            nodes.forEach(n => { n.update(width, height); n.draw(ctx); });
 
-        nodes.forEach((n1, i) => {
-            nodes.slice(i + 1).forEach(n2 => {
-                const dx = n1.x - n2.x;
-                const dy = n1.y - n2.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 150) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(0, 212, 255, ${0.3 * (1 - distance / 150)})`;
-                    ctx.lineWidth = 1;
-                    ctx.moveTo(n1.x, n1.y);
-                    ctx.lineTo(n2.x, n2.y);
-                    ctx.stroke();
+            // Draw connections
+            nodes.forEach((n1, i) => {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const n2 = nodes[j];
+                    const dx = n1.x - n2.x;
+                    const dy = n1.y - n2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.3 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(n1.x, n1.y);
+                        ctx.lineTo(n2.x, n2.y);
+                        ctx.stroke();
+                    }
                 }
             });
-        });
 
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+            requestAnimationFrame(animate);
+        }
+        animate();
     });
 }
 
@@ -474,41 +457,30 @@ function initHexagons() {
     const canvas = document.getElementById('hexagon-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-    const hexagons = [];
+    let hexagons = [];
     const hexCount = 30;
 
     class Hexagon {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
+        constructor(width, height) {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
             this.size = Math.random() * 30 + 20;
             this.rotation = Math.random() * Math.PI * 2;
             this.rotationSpeed = (Math.random() - 0.5) * 0.02;
             this.alpha = Math.random() * 0.3 + 0.1;
         }
-
-        update() {
-            this.rotation += this.rotationSpeed;
-        }
-
-        draw() {
+        update() { this.rotation += this.rotationSpeed; }
+        draw(ctx) {
             ctx.save();
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
             ctx.beginPath();
-
             for (let i = 0; i < 6; i++) {
                 const angle = (Math.PI / 3) * i;
                 const x = this.size * Math.cos(angle);
                 const y = this.size * Math.sin(angle);
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
+                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
             }
-
             ctx.closePath();
             ctx.strokeStyle = `rgba(0, 255, 136, ${this.alpha})`;
             ctx.lineWidth = 2;
@@ -517,26 +489,19 @@ function initHexagons() {
         }
     }
 
-    for (let i = 0; i < hexCount; i++) {
-        hexagons.push(new Hexagon());
-    }
+    handleCanvasResize(canvas, (ctx, width, height) => {
+        if (hexagons.length === 0) {
+            for (let i = 0; i < hexCount; i++) hexagons.push(new Hexagon(width, height));
+        } else {
+            hexagons.forEach(h => { h.x = Math.random() * width; h.y = Math.random() * height; });
+        }
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        hexagons.forEach(hex => {
-            hex.update();
-            hex.draw();
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            hexagons.forEach(h => { h.update(); h.draw(ctx); });
+            requestAnimationFrame(animate);
+        }
+        animate();
     });
 }
 
@@ -693,14 +658,16 @@ function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
     const sections = document.querySelectorAll('section[id]');
     
-    // Define section background colors
+    // Define navbar theme per section (controls navbar class)
+    // 'light' -> navbar-light (dark blue navbar)
+    // 'dark'  -> navbar-dark (grey navbar)
     const sectionColors = {
-        'home': 'dark',           // Dark blue background
-        'about': 'light',         // Light grey background
-        'skills': 'light',        // Light grey background
-        'experience': 'dark',     // Dark blue background
-        'projects': 'light',      // Light grey background
-        'contact': 'dark'         // Dark blue background
+        'home': 'dark',            // grey navbar on Home (optional)
+        'about': 'light',          // dark blue navbar on About
+        'skills': 'dark',          // grey navbar on Technical Arsenal
+        'experience': 'light',     // dark blue navbar on Experience
+        'projects': 'dark',        // grey navbar on Projects
+        'contact': 'light'         // dark blue navbar on Get in Touch
     };
 
     function updateNavbarColor() {
@@ -950,42 +917,6 @@ function initTypingEffect() {
     setTimeout(type, 1000);
 }
 
-// ===== CURSOR GLOW EFFECT =====
-function initCursorGlow() {
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-glow';
-    cursor.style.cssText = `
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #00ff88;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transition: all 0.1s ease;
-        mix-blend-mode: difference;
-        display: none;
-    `;
-    document.body.appendChild(cursor);
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.display = 'block';
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-    });
-
-    document.querySelectorAll('a, button, .project-card, .skill-category, .tech-icon').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(2)';
-            cursor.style.borderColor = '#00d4ff';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursor.style.borderColor = '#00ff88';
-        });
-    });
-}
-
 // ===== PARALLAX EFFECT =====
 function initParallax() {
     window.addEventListener('scroll', () => {
@@ -1038,7 +969,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initContactForm();
     initTypingEffect();
-    initCursorGlow();
+    // Removed cursor glow per request
+    // initCursorGlow();
     initParallax();
     initLogoClick();
 
