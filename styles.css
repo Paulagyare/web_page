@@ -564,3 +564,31 @@ section > .container { position: relative; z-index: 2; }
 }
 .email-choices a:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
 .email-choices a i { color: var(--accent); }
+
+/* ===== Night mode: text-contrast fixes ===== */
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .logo-text,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .name-line,
+[data-theme="dark"] .hero-blurb strong,
+[data-theme="dark"] .hero-focus li,
+[data-theme="dark"] .stat-box,
+[data-theme="dark"] .stat-number,
+[data-theme="dark"] .category-header h3,
+[data-theme="dark"] .tech-title,
+[data-theme="dark"] .tech-icon,
+[data-theme="dark"] .exp-headline h3,
+[data-theme="dark"] .featured-body h3,
+[data-theme="dark"] .phase-card h4,
+[data-theme="dark"] .project-content h3,
+[data-theme="dark"] .leadership-title,
+[data-theme="dark"] .leadership-card h4,
+[data-theme="dark"] .contact-text h3,
+[data-theme="dark"] .method-info h4 { color: var(--text); }
+
+[data-theme="dark"] .hero-subtitle { color: #9fc0f0; }
+[data-theme="dark"] .tech-badge { color: var(--on-navy-muted); }
+[data-theme="dark"] .hamburger span { background: var(--text); }
+[data-theme="dark"] .hero-section { background: linear-gradient(180deg, #0b1524, var(--page-bg)); }
+[data-theme="dark"] .navbar { background: rgba(9, 14, 24, 0.82); }
+[data-theme="dark"] .navbar.scrolled { background: rgba(9, 14, 24, 0.95); }
