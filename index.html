@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Paul Agyare | Cybersecurity Professional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="loader-text">
+                <span class="loading-word">INITIALIZING</span>
+                <span class="loading-dots">...</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-stats">
+                <div class="loader-stat">
+                    <i class="fas fa-lock"></i>
+                    <span>SECURITY</span>
+                </div>
+                <div class="loader-stat">
+                    <i class="fas fa-network-wired"></i>
+                    <span>NETWORK</span>
+                </div>
+                <div class="loader-stat">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>PROTECTION</span>
+                </div>
+            </div>
+        </div>
+        <canvas id="loader-canvas"></canvas>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo" id="logo-link">
+                <div class="nav-logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span class="logo-text">PA<span class="text-glow">|CYBER</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-user-shield"></i> About</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#projects" class="nav-link"><i class="fas fa-laptop-code"></i> Projects</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section section-slide">
+        <canvas id="matrix-canvas"></canvas>
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-name-section">
+                    <h1 class="hero-name">
+                        <span class="name-line">PAUL</span>
+                        <span class="name-line">AGYARE</span>
+                    </h1>
+                    <div class="name-underline"></div>
+                </div>
+                <div class="typing-container">
+                    <p class="typing-text">Security Operations Analyst<span class="cursor">|</span></p>
+                </div>
+                <p class="hero-subtitle">Security Operations (SecOps) &mdash; SIEM, Threat Detection &amp; Incident Response</p>
+                <p class="hero-blurb">
+                    Cybersecurity student at BYU&ndash;Idaho focused on <strong>Security Operations</strong>&mdash;
+                    monitoring, detecting, and responding to threats with Splunk, Suricata, and Security Onion.
+                    I build hands-on SOC labs, backed by <strong>vulnerability assessment</strong> and
+                    <strong>risk &amp; compliance</strong> work.
+                </p>
+                <ul class="hero-focus">
+                    <li><i class="fas fa-bell"></i> SIEM &amp; Monitoring</li>
+                    <li><i class="fas fa-magnifying-glass-chart"></i> Threat Detection</li>
+                    <li><i class="fas fa-bolt"></i> Incident Response</li>
+                    <li><i class="fas fa-shield-halved"></i> Vulnerability &amp; Risk</li>
+                </ul>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Get In Touch</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View Projects</span>
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-stats">
+                    <div class="stat-box" data-hover="security">
+                        <i class="fas fa-diagram-project"></i>
+                        <span class="stat-number" data-target="6">0</span>+
+                        <p>Security Projects Built</p>
+                    </div>
+                    <div class="stat-box" data-hover="support">
+                        <i class="fas fa-network-wired"></i>
+                        <span class="stat-number" data-target="5">0</span>
+                        <p>Network Zones Designed</p>
+                    </div>
+                    <div class="stat-box" data-hover="accuracy">
+                        <i class="fas fa-bullseye"></i>
+                        <span class="stat-number" data-target="99">0</span>%
+                        <p>Accuracy Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>Scroll Down</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-slide">
+        <canvas id="particles-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">01.</span>
+                ABOUT ME
+                <span class="title-line"></span>
+            </h2>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <div class="image-wrapper">
+                        <img class="main-image" src="paul-professional.JPG" alt="Paul Agyare - Professional">
+                        <div class="hover-logo">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <div class="image-fade-overlay"></div>
+                    </div>
+                    <!-- Cyber Status Panel -->
+                    <div class="cyber-status-panel">
+                        <div class="status-header">
+                            <div class="status-indicator">
+                                <span class="status-dot"></span>
+                                <span class="status-text">ONLINE</span>
+                            </div>
+                            <div class="security-level">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>SECURITY LEVEL: MAXIMUM</span>
+                            </div>
+                        </div>
+                        <div class="cyber-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-label">ENCRYPTION</span>
+                                    <span class="stat-value">AES-256</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-label">NETWORK</span>
+                                    <span class="stat-value">SECURED</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-label">MONITORING</span>
+                                    <span class="stat-value">ACTIVE</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cyber-grid">
+                            <div class="grid-line horizontal"></div>
+                            <div class="grid-line vertical"></div>
+                            <div class="grid-dots">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <span class="terminal-button close"></span>
+                            <span class="terminal-button minimize"></span>
+                            <span class="terminal-button maximize"></span>
+                            <span class="terminal-title">about_paul.sh</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="prompt">$</span> cat objective.txt</p>
+                            <p class="objective-text">
+                                Motivated <span class="highlight">Cybersecurity major</span> at BYU–Idaho seeking an
+                                <span class="highlight">Info Security Vulnerability & Risk Compliance Analyst Internship</span>.
+                                Skilled in identifying security gaps, managing network configurations, and supporting
+                                compliance practices. Eager to apply hands-on experience in vulnerability assessment,
+                                system hardening, and cloud security to strengthen organizational defenses.
+                            </p>
+                            <p class="terminal-line"><span class="prompt">$</span> ./education.sh</p>
+                            <div class="education-info">
+                                <h3><i class="fas fa-graduation-cap"></i> Brigham Young University–Idaho</h3>
+                                <p class="degree">Bachelor of Science in Cybersecurity</p>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Rexburg, ID</p>
+                                <p class="graduation"><i class="fas fa-calendar"></i> Expected: 2028</p>
+                                <div class="coursework">
+                                    <p class="terminal-line"><span class="prompt">$</span> ls coursework/</p>
+                                    <ul>
+                                        <li><i class="fas fa-chevron-right"></i> Network Security</li>
+                                        <li><i class="fas fa-chevron-right"></i> Vulnerability & Risk Management</li>
+                                        <li><i class="fas fa-chevron-right"></i> Linux Administration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="terminal-line"><span class="prompt">$</span> <span class="cursor-blink">_</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section section-slide">
+        <canvas id="particles-skills-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">02.</span>
+                TECHNICAL ARSENAL
+                <span class="title-line"></span>
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="category-header">
+                        <i class="fas fa-shield-virus"></i>
+                        <h3>Security & Compliance</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item" data-level="90">
+                            <span class="skill-name">
+                                Vulnerability Scanning
+                                <span class="skill-percentage">90%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <span class="skill-name">
+                                IAM
+                                <span class="skill-percentage">85%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <span class="skill-name">
+                                Encryption
+                                <span class="skill-percentage">88%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="92">
+                            <span class="skill-name">
+                                Access Control
+                                <span class="skill-percentage">92%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="category-header">
+                        <i class="fas fa-network-wired"></i>
+                        <h3>Networking</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item" data-level="90">
+                            <span class="skill-name">
+                                VLANs & Trunking
+                                <span class="skill-percentage">90%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <span class="skill-name">
+                                HSRP & DHCP
+                                <span class="skill-percentage">85%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <span class="skill-name">
+                                OSPF & Routing
+                                <span class="skill-percentage">88%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="92">
+                            <span class="skill-name">
+                                Subnetting
+                                <span class="skill-percentage">92%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="category-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & Systems</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item" data-level="85">
+                            <span class="skill-name">
+                                AWS
+                                <span class="skill-percentage">85%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="90">
+                            <span class="skill-name">
+                                Linux Scripting
+                                <span class="skill-percentage">90%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <span class="skill-name">
+                                Wireshark
+                                <span class="skill-percentage">88%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="87">
+                            <span class="skill-name">
+                                Python & Bash
+                                <span class="skill-percentage">87%</span>
+                            </span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="87"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack Icons -->
+            <div class="tech-stack" data-aos="fade-up">
+                <h3 class="tech-title">Technologies I Work With</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" data-tooltip="AWS">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Linux">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Python">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Docker">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Git">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Network Security">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Cloud Security">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="tech-icon" data-tooltip="Penetration Testing">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section section-slide">
+        <canvas id="binary-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">03.</span>
+                EXPERIENCE
+                <span class="title-line"></span>
+            </h2>
+            <div class="timeline">
+                <div class="exp-item" data-aos="fade-up">
+                    <div class="exp-marker"><i class="fas fa-shield-halved"></i></div>
+                    <div class="exp-card">
+                        <div class="exp-top">
+                            <div class="exp-headline">
+                                <h3>Security Engineer &mdash; Enterprise Security Capstone</h3>
+                                <span class="exp-company"><i class="fas fa-building"></i> BYU&ndash;Idaho &middot; Hands-on Lab</span>
+                            </div>
+                            <span class="exp-date">2025</span>
+                        </div>
+                        <div class="exp-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Rexburg, ID</span>
+                            <span><i class="fas fa-diagram-project"></i> 4-Phase Build</span>
+                        </div>
+                        <p class="exp-summary">Architected and defended a full segmented enterprise network end-to-end &mdash; from firewall design through Zero Trust access, IDS/SIEM monitoring, and automated incident response.</p>
+                        <ul class="exp-points">
+                            <li>Designed a 5-zone segmented network (secure, inside, DMZ, interconnect, outside) with an RFC1918 IP/VLAN schema, deploying Palo Alto and FortiGate firewalls with routing, security policies, NAT/PAT, and load-balanced DMZ web servers.</li>
+                            <li>Implemented Zero Trust access using SSL VPN with Duo MFA + Active Directory and a Guacamole ZTNA gateway for brokered, identity-aware remote access.</li>
+                            <li>Stood up a Security Onion SOC with Suricata/Zeek IDS, authored custom Suricata detection rules, and shipped Sysmon endpoint telemetry via Elastic Agent into a Splunk SIEM.</li>
+                            <li>Built a SOAR pipeline (n8n + Claude Code) that enriches Splunk alerts with GeoIP/threat intel and auto-pushes blocking rules to the Palo Alto firewall, then validated detections through simulated attacks.</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <span class="exp-chip"><strong>5</strong> Zones</span>
+                            <span class="exp-chip"><strong>2</strong> Firewalls</span>
+                            <span class="exp-chip"><strong>4</strong> Phases</span>
+                            <span class="exp-chip"><strong>SOAR</strong> Automated</span>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">Palo Alto</span>
+                            <span class="tag">FortiGate</span>
+                            <span class="tag">Zero Trust</span>
+                            <span class="tag">Security Onion</span>
+                            <span class="tag">Splunk</span>
+                            <span class="tag">n8n SOAR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item" data-aos="fade-up">
+                    <div class="exp-marker"><i class="fas fa-file-contract"></i></div>
+                    <div class="exp-card">
+                        <div class="exp-top">
+                            <div class="exp-headline">
+                                <h3>Student Buyer &mdash; Cyber Procurement Agent</h3>
+                                <span class="exp-company"><i class="fas fa-building"></i> Brigham Young University&ndash;Idaho</span>
+                            </div>
+                            <span class="exp-date">2025 &ndash; Present</span>
+                        </div>
+                        <div class="exp-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Rexburg, ID</span>
+                            <span><i class="fas fa-user-shield"></i> Procurement &amp; Compliance</span>
+                        </div>
+                        <p class="exp-summary">Evaluate, negotiate, and procure software licenses across the university, reviewing vendor terms for security and compliance alignment.</p>
+                        <ul class="exp-points">
+                            <li>Reviewed software terms, EULAs, and data privacy policies to ensure institutional security alignment and vendor risk reduction.</li>
+                            <li>Led a cross-institutional conference between BYU&ndash;Idaho, BYU, and Google &mdash; coordinating agendas and driving consensus among senior stakeholders.</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <span class="exp-chip"><strong>EULA</strong> Review</span>
+                            <span class="exp-chip"><strong>3</strong> Institutions Aligned</span>
+                            <span class="exp-chip"><strong>100%</strong> Compliance Focus</span>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">Vendor Risk</span>
+                            <span class="tag">Compliance</span>
+                            <span class="tag">Contract Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item" data-aos="fade-up">
+                    <div class="exp-marker"><i class="fas fa-headset"></i></div>
+                    <div class="exp-card">
+                        <div class="exp-top">
+                            <div class="exp-headline">
+                                <h3>Technical Support Analyst</h3>
+                                <span class="exp-company"><i class="fas fa-building"></i> FamilySearch</span>
+                            </div>
+                            <span class="exp-date">Aug 2024 &ndash; Dec 2024</span>
+                        </div>
+                        <div class="exp-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Accra, Ghana</span>
+                            <span><i class="fas fa-database"></i> Support &amp; Auditing</span>
+                        </div>
+                        <p class="exp-summary">Delivered front-line technical support and data integrity auditing across archival systems, resolving access issues at scale with high resolution rates.</p>
+                        <ul class="exp-points">
+                            <li>Resolved account and access issues for 100+ users weekly with a 95% first-contact resolution rate.</li>
+                            <li>Supported 3,000+ users/month via Zendesk and Genesys, boosting CSAT by 30%.</li>
+                            <li>Conducted 6,000+ metadata audits ensuring 98% data integrity across archival records.</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <span class="exp-chip"><strong>95%</strong> First-Contact Fix</span>
+                            <span class="exp-chip"><strong>3K+</strong> Users / Month</span>
+                            <span class="exp-chip"><strong>6K+</strong> Metadata Audits</span>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tag">Zendesk</span>
+                            <span class="tag">Genesys</span>
+                            <span class="tag">Data Integrity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section section-slide">
+        <canvas id="hexagon-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">04.</span>
+                PROJECTS & SECURITY LABS
+                <span class="title-line"></span>
+            </h2>
+
+            <!-- Featured Capstone Project -->
+            <div class="featured-project" data-aos="fade-up">
+                <div class="featured-media">
+                    <img src="network-diagram-phase3.png" alt="Enterprise network diagram with Security Onion (Phase 3)" onerror="this.style.display='none';">
+                    <div class="featured-media-fallback">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Enterprise Network Architecture</span>
+                    </div>
+                    <span class="featured-badge"><i class="fas fa-star"></i> Featured Build</span>
+                </div>
+                <div class="featured-body">
+                    <h3>Enterprise Security Capstone &mdash; Full Network Build</h3>
+                    <p class="featured-lead">A complete, defended enterprise network built and hardened across four phases and thirteen weeks &mdash; from segmented dual-firewall architecture to Zero Trust access, SOC monitoring, automated incident response, and a final adversary simulation to validate that detections fire and automation responds.</p>
+                    <div class="phase-grid">
+                        <div class="phase-card">
+                            <span class="phase-tag">Phase 1</span>
+                            <h4><i class="fas fa-sitemap"></i> Architecture &amp; Segmentation</h4>
+                            <p>Designed a 5-zone network (secure, inside, DMZ, interconnect, outside) with an RFC1918 IP and VLAN schema, deploying Palo Alto (internet-facing) and FortiGate (VDOM) firewalls.</p>
+                        </div>
+                        <div class="phase-card">
+                            <span class="phase-tag">Phase 2</span>
+                            <h4><i class="fas fa-server"></i> DMZ, NAT &amp; Web Tier</h4>
+                            <p>Placed 2 web servers in the DMZ, 1 inside, and 1 in the secure zone; configured NAT/PAT outbound and static NAT inbound, load balancing (NLB) with failover, and locked down Active Directory exposure.</p>
+                        </div>
+                        <div class="phase-card">
+                            <span class="phase-tag">Phase 2&ndash;3</span>
+                            <h4><i class="fas fa-user-lock"></i> Zero Trust Access</h4>
+                            <p>Delivered SSL/TLS VPN, 802.1X port-based access control, Duo MFA integrated with Active Directory, and a Guacamole ZTNA gateway for brokered, identity-aware remote access.</p>
+                        </div>
+                        <div class="phase-card">
+                            <span class="phase-tag">Phase 3&ndash;4</span>
+                            <h4><i class="fas fa-robot"></i> Detection, SIEM &amp; SOAR</h4>
+                            <p>Deployed Security Onion (Suricata/Zeek) with custom IDS rules and Sysmon&rarr;Splunk telemetry, then automated response via an n8n/Claude Code pipeline that enriches Splunk alerts and pushes blocks to the Palo Alto API.</p>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Palo Alto</span>
+                        <span class="tech-badge">FortiGate</span>
+                        <span class="tech-badge">VLAN / NAT</span>
+                        <span class="tech-badge">Active Directory</span>
+                        <span class="tech-badge">SSL VPN + Duo</span>
+                        <span class="tech-badge">802.1X</span>
+                        <span class="tech-badge">Guacamole ZTNA</span>
+                        <span class="tech-badge">Security Onion</span>
+                        <span class="tech-badge">Suricata</span>
+                        <span class="tech-badge">Splunk</span>
+                        <span class="tech-badge">n8n SOAR</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Paulagyare" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card" data-aos="flip-left">
+                    <div class="project-image">
+                        <img src="enterprise-network-security.webp" alt="Enterprise Security Architecture" onerror="this.style.display='none';">
+                        <div class="project-overlay">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Enterprise Security Architecture</h3>
+                        <p>Designed a 5-zone IPv4 architecture (secure, inside, DMZ, interconnect, outside) with an RFC1918 IP schema, defined trust boundaries, and mapped traffic flows. Deployed Palo Alto (internet-facing) and FortiGate (VDOM) firewalls with interfaces, subinterfaces, static routing, and security policies.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Palo Alto</span>
+                            <span class="tech-badge">FortiGate VDOM</span>
+                            <span class="tech-badge">RFC1918</span>
+                            <span class="tech-badge">Trust Boundaries</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#projects" class="project-link"><i class="fas fa-external-link-alt"></i> Details</a>
+                            <a href="https://github.com/Paulagyare" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="flip-left" data-aos-delay="75">
+                    <div class="project-image">
+                        <img src="ubuntu-server-security-best-practices.webp" alt="Zero Trust Access and DMZ Infrastructure" onerror="this.style.display='none';">
+                        <div class="project-overlay">
+                            <i class="fas fa-user-lock"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Zero Trust Access &amp; DMZ Infrastructure</h3>
+                        <p>Built DMZ web infrastructure (2 web servers) with NLB load balancing and failover, restricting Active Directory exposure to inside zones. Implemented SSL/TLS VPN, 802.1X port-based access control, Duo MFA + AD, and a Guacamole ZTNA gateway to broker identity-aware, Zero Trust remote access.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">SSL VPN</span>
+                            <span class="tech-badge">802.1X</span>
+                            <span class="tech-badge">Duo MFA</span>
+                            <span class="tech-badge">Guacamole ZTNA</span>
+                            <span class="tech-badge">Load Balancing</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#projects" class="project-link"><i class="fas fa-external-link-alt"></i> Details</a>
+                            <a href="https://github.com/Paulagyare" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="6468c2fe97e20ef212d05dc0_security_onion.webp" alt="Security Onion SOC platform" onerror="this.style.display='none';">
+                        <div class="project-overlay">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Security Onion SOC &amp; IDS Lab</h3>
+                        <p>Deployed Security Onion in the secure zone to monitor DMZ traffic. Wrote custom Suricata rules &mdash; one detecting obfuscated "rigby" strings with arbitrary whitespace, another flagging outbound SYN requests from web servers &mdash; and collected Sysmon telemetry from Web1, Duo, and AD via Elastic Agent.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Security Onion</span>
+                            <span class="tech-badge">Suricata/Zeek</span>
+                            <span class="tech-badge">Custom Rules</span>
+                            <span class="tech-badge">Elastic Agent</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://docs.securityonionsolutions.com/" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Docs</a>
+                            <a href="https://github.com/Paulagyare" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="flip-left" data-aos-delay="150">
+                    <div class="project-image">
+                        <img src="byui_app.png" alt="SIEM Threat Detection Engineering" onerror="this.style.display='none';">
+                        <div class="project-overlay">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>SIEM Threat Detection Engineering</h3>
+                        <p>Deployed Splunk and ingested logs from the firewalls (syslog), web servers (IIS), and Security Onion. Built working dashboards and detections for brute-force, scanning, suspicious URLs, and beaconing behavior across the environment.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Splunk</span>
+                            <span class="tech-badge">Syslog / IIS</span>
+                            <span class="tech-badge">Dashboards</span>
+                            <span class="tech-badge">Detection Rules</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#projects" class="project-link"><i class="fas fa-external-link-alt"></i> Details</a>
+                            <a href="https://github.com/Paulagyare" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="https://imgs.search.brave.com/o5xrb0yPL6vzrlnT9Ic7dDSZ7rLk3dLLVFisyJB9ZGU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bmV3ZXZvbC5pby9y/ZXNvdXJjZXMvd3At/Y29udGVudC91cGxv/YWRzLzIwMjUvMDEv/SG93LVNPQVItQXV0/b21hdGlvbi1SZWR1/Y2VzLUluY2lkZW50/LVJlc3BvbnNlLVRp/bWUtMTU2OHg3MzUu/anBn" alt="SOAR Incident Response Automation" onerror="this.style.display='none';">
+                        <div class="project-overlay">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>SOAR Incident Response Automation</h3>
+                        <p>Built an automated response pipeline with n8n and Claude Code: a Splunk alert triggers extraction of the source IP, GeoIP and threat-intel enrichment, a malicious/benign decision, and an auto-pushed block rule to the Palo Alto API. Validated end-to-end with a threat simulation &mdash; scanning and web attacks against the DMZ &mdash; confirming detections fire and automation responds.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">n8n</span>
+                            <span class="tech-badge">Claude Code</span>
+                            <span class="tech-badge">GeoIP + Threat Intel</span>
+                            <span class="tech-badge">Palo Alto API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#projects" class="project-link"><i class="fas fa-external-link-alt"></i> Details</a>
+                            <a href="https://github.com/Paulagyare" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leadership Section -->
+            <div class="leadership-section" data-aos="fade-up">
+                <h3 class="leadership-title">Leadership & Community Impact</h3>
+                <div class="leadership-grid">
+                    <div class="leadership-card">
+                        <div class="leadership-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h4>Peer Mentorship</h4>
+                        <p>Assisted peers with cybersecurity and network troubleshooting labs, fostering collaborative learning.</p>
+                    </div>
+                    <div class="leadership-card">
+                        <div class="leadership-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h4>Case Study Leadership</h4>
+                        <p>Led collaborative case studies in risk and compliance analysis, developing practical security solutions.</p>
+                    </div>
+                    <div class="leadership-card">
+                        <div class="leadership-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Vulnerability Management</h4>
+                        <p>Applied vulnerability management concepts in simulated environments, enhancing practical security skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-slide">
+        <canvas id="radar-canvas"></canvas>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-number">05.</span>
+                GET IN TOUCH
+                <span class="title-line"></span>
+            </h2>
+            <div class="contact-content">
+                <div class="contact-text" data-aos="fade-right">
+                    <h3>Let's Secure the Future Together</h3>
+                    <p>I'm currently seeking internship opportunities in Information Security, Vulnerability Assessment, and Risk Compliance. If you're looking for a dedicated cybersecurity professional to strengthen your organization's defenses, let's connect!</p>
+                    <div class="contact-methods">
+                        <a href="mailto:biggstagga@gmail.com" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Email</h4>
+                                <p>biggstagga@gmail.com</p>
+                            </div>
+                        </a>
+                        <a href="mailto:agy21003@byui.edu" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>School Email</h4>
+                                <p>agy21003@byui.edu</p>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/paul-agyare-14183a1b8" target="_blank" rel="noopener noreferrer" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>LinkedIn</h4>
+                                <p>in/paul-agyare</p>
+                            </div>
+                        </a>
+                        <a href="tel:2087606233" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Phone</h4>
+                                <p>208-760-6233</p>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Location</h4>
+                                <p>Rexburg, Idaho</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Your Name</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Your Email</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" required>
+                            <label for="subject">Subject</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" required></textarea>
+                            <label for="message">Your Message</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <button type="submit" class="btn btn-submit">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Paul Agyare. Securing the Digital Frontier.</p>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/paul-agyare-14183a1b8" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Paulagyare/web_page" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/Manlike_Stagga" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/Paulagyare" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+            <p class="footer-tagline">Designed & Built with <i class="fas fa-heart"></i> and <i class="fas fa-code"></i></p>
+        </div>
+        <div class="footer-particles"></div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your EmailJS public key
+        })();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
