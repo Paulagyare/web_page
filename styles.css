@@ -466,3 +466,31 @@ section > .container { position: relative; z-index: 2; }
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     [data-aos] { opacity: 1 !important; transform: none !important; }
 }
+
+/* Project expandable writeups */
+.project-writeup { margin: 12px 0 4px; }
+.project-writeup summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 6px 0;
+    user-select: none;
+}
+.project-writeup summary::-webkit-details-marker { display: none; }
+.project-writeup summary i { transition: transform 0.25s ease; font-size: 0.75rem; }
+.project-writeup[open] summary i { transform: rotate(90deg); }
+.project-writeup .writeup-body {
+    margin-top: 8px;
+    padding: 14px 16px;
+    background: rgba(37, 99, 235, 0.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+}
+.project-writeup .writeup-body p { font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px; }
+.project-writeup .writeup-body p:last-child { margin-bottom: 0; }
+.project-writeup .writeup-body strong { color: var(--accent); }

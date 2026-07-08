@@ -638,6 +638,14 @@
                     <div class="project-content">
                         <h3>Enterprise Security Architecture</h3>
                         <p>Designed a 5-zone IPv4 architecture (secure, inside, DMZ, interconnect, outside) with an RFC1918 IP schema, defined trust boundaries, and mapped traffic flows. Deployed Palo Alto (internet-facing) and FortiGate (VDOM) firewalls with interfaces, subinterfaces, static routing, and security policies.</p>
+                        <details class="project-writeup">
+                            <summary><i class="fas fa-chevron-right"></i> Read writeup</summary>
+                            <div class="writeup-body">
+                                <p><strong>Objective.</strong> Segment an enterprise network into distinct trust zones and enforce policy at two independent firewall tiers, so a compromise in one zone can't move freely into another.</p>
+                                <p><strong>What I built.</strong> Five zones &mdash; Outside, DMZ, Inside, Secure, and an Interconnect link &mdash; on an RFC1918 addressing schema with VLAN sub-interfaces. A Palo Alto zone-based firewall sits at the internet edge; a FortiGate (VDOM) sits behind it on the interconnect. I configured static routing, NAT/PAT for outbound traffic, static NAT for published DMZ services, and least-privilege security policies for every inter-zone flow.</p>
+                                <p><strong>Outcome.</strong> A defensible topology where the DMZ, user, and secure/AD zones are isolated from each other and all cross-zone traffic is explicitly policy-controlled and logged.</p>
+                            </div>
+                        </details>
                         <div class="project-tech">
                             <span class="tech-badge">Palo Alto</span>
                             <span class="tech-badge">FortiGate VDOM</span>
@@ -661,6 +669,14 @@
                     <div class="project-content">
                         <h3>Zero Trust Access &amp; DMZ Infrastructure</h3>
                         <p>Built DMZ web infrastructure (2 web servers) with NLB load balancing and failover, restricting Active Directory exposure to inside zones. Implemented SSL/TLS VPN, 802.1X port-based access control, Duo MFA + AD, and a Guacamole ZTNA gateway to broker identity-aware, Zero Trust remote access.</p>
+                        <details class="project-writeup">
+                            <summary><i class="fas fa-chevron-right"></i> Read writeup</summary>
+                            <div class="writeup-body">
+                                <p><strong>Objective.</strong> Publish web services to the internet safely and give remote users identity-verified access without exposing internal systems like Active Directory.</p>
+                                <p><strong>What I built.</strong> Two Windows web servers behind an Ubuntu NLB load balancer with failover in the DMZ. For access control I deployed an SSL/TLS VPN, 802.1X port-based authentication, Duo MFA integrated with Active Directory through a Duo Auth Proxy, and a Guacamole gateway providing identity-aware, browser-based (ZTNA) access to internal hosts.</p>
+                                <p><strong>Outcome.</strong> Every remote and internal session is authenticated, MFA-gated, and least-privilege; AD is reachable only from inside zones, and the DMZ stays resilient through load-balanced failover.</p>
+                            </div>
+                        </details>
                         <div class="project-tech">
                             <span class="tech-badge">SSL VPN</span>
                             <span class="tech-badge">802.1X</span>
@@ -685,6 +701,14 @@
                     <div class="project-content">
                         <h3>Security Onion SOC &amp; IDS Lab</h3>
                         <p>Deployed Security Onion in the secure zone to monitor DMZ traffic. Wrote custom Suricata rules &mdash; one detecting obfuscated "rigby" strings with arbitrary whitespace, another flagging outbound SYN requests from web servers &mdash; and collected Sysmon telemetry from Web1, Duo, and AD via Elastic Agent.</p>
+                        <details class="project-writeup">
+                            <summary><i class="fas fa-chevron-right"></i> Read writeup</summary>
+                            <div class="writeup-body">
+                                <p><strong>Objective.</strong> Gain full visibility into DMZ traffic and detect attacker behavior at both the network and endpoint level.</p>
+                                <p><strong>What I built.</strong> A Security Onion sensor in the secure zone with a dedicated monitor NIC mirroring DMZ traffic. I wrote two custom Suricata rules &mdash; one that matches an obfuscated "rigby" string tolerant of arbitrary whitespace, and one that flags outbound SYN requests originating from the web servers (a signal that a server has been compromised and is beaconing out). Zeek supplied protocol metadata, and Sysmon endpoint telemetry from Web1, the Duo host, and AD was shipped in through Elastic Agent.</p>
+                                <p><strong>Outcome.</strong> Combined network and endpoint detection driven by environment-specific rules, all feeding a single investigative platform for triage.</p>
+                            </div>
+                        </details>
                         <div class="project-tech">
                             <span class="tech-badge">Security Onion</span>
                             <span class="tech-badge">Suricata/Zeek</span>
@@ -708,6 +732,14 @@
                     <div class="project-content">
                         <h3>SIEM Threat Detection Engineering</h3>
                         <p>Deployed Splunk and ingested logs from the firewalls (syslog), web servers (IIS), and Security Onion. Built working dashboards and detections for brute-force, scanning, suspicious URLs, and beaconing behavior across the environment.</p>
+                        <details class="project-writeup">
+                            <summary><i class="fas fa-chevron-right"></i> Read writeup</summary>
+                            <div class="writeup-body">
+                                <p><strong>Objective.</strong> Centralize logs from across the environment and build the detections and dashboards a SOC analyst actually works from.</p>
+                                <p><strong>What I built.</strong> A Splunk deployment ingesting firewall syslog, IIS web-server logs, and Security Onion alerts. On top of that I built dashboards and saved searches for brute-force attempts, port and host scanning, suspicious URL patterns, and beaconing.</p>
+                                <p><strong>Outcome.</strong> A single pane of glass for triage, with alerts that map to real attacker techniques and hand off cleanly to the response pipeline.</p>
+                            </div>
+                        </details>
                         <div class="project-tech">
                             <span class="tech-badge">Splunk</span>
                             <span class="tech-badge">Syslog / IIS</span>
@@ -731,6 +763,15 @@
                     <div class="project-content">
                         <h3>SOAR Incident Response Automation</h3>
                         <p>Built an automated response pipeline with n8n and Claude Code: a Splunk alert triggers extraction of the source IP, GeoIP and threat-intel enrichment, a malicious/benign decision, and an auto-pushed block rule to the Palo Alto API. Validated end-to-end with a threat simulation &mdash; scanning and web attacks against the DMZ &mdash; confirming detections fire and automation responds.</p>
+                        <details class="project-writeup">
+                            <summary><i class="fas fa-chevron-right"></i> Read writeup</summary>
+                            <div class="writeup-body">
+                                <p><strong>Objective.</strong> Cut incident response time by automating containment instead of blocking attackers by hand.</p>
+                                <p><strong>What I built.</strong> An n8n workflow (assisted by Claude Code) triggered by a Splunk alert: it extracts the source IP, enriches it with GeoIP and threat-intelligence lookups, makes a malicious-versus-benign decision, and automatically pushes a block rule to the Palo Alto firewall via its API.</p>
+                                <p><strong>Validation.</strong> I ran a threat simulation &mdash; scanning and web attacks against the DMZ &mdash; and confirmed end-to-end that the detections fired and the automation blocked the source with no manual step.</p>
+                                <p><strong>Outcome.</strong> Alert-to-block containment in seconds, demonstrating a working SOAR loop from detection through response.</p>
+                            </div>
+                        </details>
                         <div class="project-tech">
                             <span class="tech-badge">n8n</span>
                             <span class="tech-badge">Claude Code</span>
