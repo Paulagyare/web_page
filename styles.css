@@ -494,3 +494,73 @@ section > .container { position: relative; z-index: 2; }
 .project-writeup .writeup-body p { font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px; }
 .project-writeup .writeup-body p:last-child { margin-bottom: 0; }
 .project-writeup .writeup-body strong { color: var(--accent); }
+
+/* ============================== NIGHT MODE ========================== */
+[data-theme="dark"] {
+    color-scheme: dark;
+    --page-bg: #070c16;
+    --surface: #101a2c;
+    --surface-alt: #0c1524;
+    --navy: #0a2540;
+    --navy-deep: #050f1e;
+    --navy-soft: #24456e;
+    --accent: #3b82f6;
+    --accent-dark: #2563eb;
+    --accent-sky: #38bdf8;
+    --accent-soft: #16233c;
+    --accent-line: #274063;
+    --text: #e7eefb;
+    --text-muted: #9fb0c8;
+    --text-faint: #6d7f9a;
+    --border: #1e2c42;
+    --on-navy: #eaf2ff;
+    --on-navy-muted: #aebfd6;
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface-alt);
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-left: 18px;
+    transition: var(--transition);
+}
+.theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Email click-to-choose */
+.contact-email-choose { display: block; padding: 16px 18px; cursor: pointer; }
+.contact-email-choose summary { display: flex; align-items: center; gap: 16px; list-style: none; }
+.contact-email-choose summary::-webkit-details-marker { display: none; }
+.contact-email-choose .choose-caret { margin-left: auto; color: var(--text-faint); font-size: 0.8rem; transition: transform 0.25s ease; }
+.contact-email-choose[open] .choose-caret { transform: rotate(180deg); }
+.email-choices { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.email-choices a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 0.88rem;
+    word-break: break-word;
+    transition: var(--transition);
+}
+.email-choices a:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
+.email-choices a i { color: var(--accent); }

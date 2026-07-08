@@ -698,30 +698,24 @@ function initContactForm() {
         submitBtn.disabled = true;
 
         try {
-            // Send email using EmailJS
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message,
-                to_email: 'agy21003@byui.edu'
-            };
-
-            // EmailJS configuration (you'll need to set this up)
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(() => {
-                    // Success message
-                    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-                    form.reset();
+            const res = await fetch('https://formsubmit.co/ajax/agy21003@byui.edu', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message,
+                    _subject: 'New message from your portfolio site',
+                    _cc: 'biggstagga@gmail.com',
+                    _template: 'table'
                 })
-                .catch(() => {
-                    // Fallback: Send via SMS using Twilio (if configured)
-                    sendSMS(name, email, subject, message);
-                });
-        } catch (error) {
-            // Fallback method - show success anyway for demo
-            showNotification(`Thank you ${name}! Your message has been received. I'll get back to you at ${email} soon!`, 'success');
+            });
+            if (!res.ok) throw new Error('Request failed');
+            showNotification(`Thanks ${name}! Your message has been sent — I'll get back to you soon.`, 'success');
             form.reset();
+        } catch (error) {
+            showNotification('Sorry, something went wrong sending your message. Please email me directly at agy21003@byui.edu.', 'error');
         } finally {
             // Reset button
             submitBtn.innerHTML = originalText;
@@ -972,3 +966,29 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initScanLine, 500);
 });
 
+
+// ===== NIGHT MODE TOGGLE =====
+(function initThemeToggle() {
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+
+    function syncIcon() {
+        const dark = root.getAttribute('data-theme') === 'dark';
+        const icon = btn && btn.querySelector('i');
+        if (icon) icon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    syncIcon();
+
+    btn && btn.addEventListener('click', () => {
+        const dark = root.getAttribute('data-theme') === 'dark';
+        if (dark) {
+            root.removeAttribute('data-theme');
+            try { localStorage.setItem('theme', 'light'); } catch (e) {}
+        } else {
+            root.setAttribute('data-theme', 'dark');
+            try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+        }
+        syncIcon();
+    });
+})();

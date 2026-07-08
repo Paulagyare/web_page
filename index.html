@@ -28,6 +28,7 @@
     <!-- Favicon (inline SVG shield, no extra file needed) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2747'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%232563eb' text-anchor='middle'%3EPA%3C/text%3E%3C/svg%3E">
 
+    <script>try{if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -80,6 +81,9 @@
                 <li><a href="#projects" class="nav-link"><i class="fas fa-laptop-code"></i> Projects</a></li>
                 <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle night mode" title="Toggle night mode">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -830,24 +834,22 @@
                     <h3>Let's Secure the Future Together</h3>
                     <p>I'm currently seeking internship opportunities in Information Security, Vulnerability Assessment, and Risk Compliance. If you're looking for a dedicated cybersecurity professional to strengthen your organization's defenses, let's connect!</p>
                     <div class="contact-methods">
-                        <a href="mailto:biggstagga@gmail.com" class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
+                        <details class="contact-method contact-email-choose">
+                            <summary>
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h4>Email</h4>
+                                    <p>Click to choose an address</p>
+                                </div>
+                                <i class="fas fa-chevron-down choose-caret"></i>
+                            </summary>
+                            <div class="email-choices">
+                                <a href="mailto:agy21003@byui.edu"><i class="fas fa-graduation-cap"></i> agy21003@byui.edu</a>
+                                <a href="mailto:biggstagga@gmail.com"><i class="fas fa-envelope-open"></i> biggstagga@gmail.com</a>
                             </div>
-                            <div class="method-info">
-                                <h4>Email</h4>
-                                <p>biggstagga@gmail.com</p>
-                            </div>
-                        </a>
-                        <a href="mailto:agy21003@byui.edu" class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>School Email</h4>
-                                <p>agy21003@byui.edu</p>
-                            </div>
-                        </a>
+                        </details>
                         <a href="https://www.linkedin.com/in/paul-agyare-14183a1b8" target="_blank" rel="noopener noreferrer" class="contact-method">
                             <div class="method-icon">
                                 <i class="fab fa-linkedin-in"></i>
@@ -857,45 +859,32 @@
                                 <p>in/paul-agyare</p>
                             </div>
                         </a>
-                        <a href="tel:2087606233" class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Phone</h4>
-                                <p>208-760-6233</p>
-                            </div>
-                        </a>
-                        <a href="#" class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Location</h4>
-                                <p>Rexburg, Idaho</p>
-                            </div>
-                        </a>
                     </div>
                 </div>
                 <div class="contact-form-wrapper" data-aos="fade-left">
-                    <form class="contact-form" id="contact-form">
+                    <form class="contact-form" id="contact-form" action="https://formsubmit.co/agy21003@byui.edu" method="POST">
+                        <input type="hidden" name="_subject" value="New message from your portfolio site">
+                        <input type="hidden" name="_cc" value="biggstagga@gmail.com">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none">
                         <div class="form-group">
-                            <input type="text" id="name" required>
+                            <input type="text" id="name" name="name" required>
                             <label for="name">Your Name</label>
                             <span class="focus-border"></span>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" required>
+                            <input type="email" id="email" name="email" required>
                             <label for="email">Your Email</label>
                             <span class="focus-border"></span>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" required>
+                            <input type="text" id="subject" name="subject" required>
                             <label for="subject">Subject</label>
                             <span class="focus-border"></span>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                             <label for="message">Your Message</label>
                             <span class="focus-border"></span>
                         </div>
