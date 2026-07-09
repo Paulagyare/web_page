@@ -450,20 +450,20 @@ function initRadar() {
     function draw(ctx, width, height) {
         centerX = width / 2;
         centerY = height / 2;
-        // Use max radius based on screen size, capped for very large screens
-        maxRadius = Math.min(width, height) * 0.35;
+        // Use max radius based on screen size, increased to match hero radar
+        maxRadius = Math.min(width, height) * 0.55;
         // For very large screens (over 1920px), scale down the radius
         if (width > 1920) {
-            maxRadius = Math.min(600, Math.min(width, height) * 0.3);
+            maxRadius = Math.min(900, Math.min(width, height) * 0.5);
         }
         if (height > 1920) {
-            maxRadius = Math.min(600, Math.min(width, height) * 0.3);
+            maxRadius = Math.min(900, Math.min(width, height) * 0.5);
         }
-        
+
         ctx.clearRect(0, 0, width, height);
 
         // Draw circles
-        ctx.strokeStyle = 'rgba(16, 36, 57, 0.1)';
+        ctx.strokeStyle = 'rgba(37, 99, 235, 0.1)';
         ctx.lineWidth = 1;
         for (let i = 1; i <= 4; i++) {
             ctx.beginPath();
@@ -485,9 +485,9 @@ function initRadar() {
         ctx.rotate(angle);
 
         const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, maxRadius);
-        gradient.addColorStop(0, 'rgba(16, 36, 57, 0.8)');
-        gradient.addColorStop(0.5, 'rgba(16, 36, 57, 0.3)');
-        gradient.addColorStop(1, 'rgba(16, 36, 57, 0)');
+        gradient.addColorStop(0, 'rgba(37, 99, 235, 0.8)');
+        gradient.addColorStop(0.5, 'rgba(37, 99, 235, 0.3)');
+        gradient.addColorStop(1, 'rgba(37, 99, 235, 0)');
 
         ctx.beginPath();
         ctx.moveTo(0, 0);
